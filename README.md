@@ -1,2 +1,2 @@
-# DatabaseDesign
-DatabaseDesign Term Project
+# DatabaseDesign Term Project
+
