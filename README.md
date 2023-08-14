@@ -103,7 +103,7 @@
 
 [4_물리적 설계.txt](https://github.com/LeeJaeYong02/DatabaseDesign/files/12335066/4_.txt)
 <details>
-<summary>스크립트트 (접기/펼치기)</summary>
+<summary>스크립트 (접기/펼치기)</summary>
 
 -- 고객
 CREATE TABLE "TB_CUSTOMER" (
