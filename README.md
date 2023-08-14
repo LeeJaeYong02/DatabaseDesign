@@ -89,6 +89,9 @@
 
 ![image](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/dc50e421-1a75-4c79-a1f5-9ecd7137871f)
 
+### 관계선 의미
+![image](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/d7ae73d9-a941-4a41-ac76-55aa2d403041)
+
 ---
 
 ## 물리적 설계
