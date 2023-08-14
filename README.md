@@ -88,8 +88,17 @@
 - 트랜잭션 인터페이스 설계
 
 ![image](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/dc50e421-1a75-4c79-a1f5-9ecd7137871f)
+
+---
+
+## 물리적 설계
+
+- DBMS에 맞는 물리적 구조 설계
+- 트랜잭션 세부 설계
+
+[4_물리적 설계.txt](https://github.com/LeeJaeYong02/DatabaseDesign/files/12335066/4_.txt)
 <details>
-<summary>스크립 (접기/펼치기)</summary>
+<summary>스크립트트 (접기/펼치기)</summary>
 
 -- 고객
 CREATE TABLE "TB_CUSTOMER" (
@@ -369,16 +378,6 @@ CREATE INDEX idx_Review_CustomerID ON TB_REVIEW(CUSTOMER_ID);
 CREATE INDEX idx_Review_ProductID ON TB_REVIEW(PRODUCT_ID);
 CREATE INDEX idx_Subcategory_CategoryID ON TB_SUBCATEGORY(CATEGORY_ID);
 </details>
-
----
-
-## 물리적 설계
-
-- DBMS에 맞는 물리적 구조 설계
-- 트랜잭션 세부 설계
-
-[4_물리적 설계.txt](https://github.com/LeeJaeYong02/DatabaseDesign/files/12335066/4_.txt)
-
 
 ---
 
