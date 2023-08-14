@@ -87,12 +87,298 @@
 - DBMS에 맞는 스키마 설계
 - 트랜잭션 인터페이스 설계
 
+![image](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/dc50e421-1a75-4c79-a1f5-9ecd7137871f)
+<details>
+<summary>스크립 (접기/펼치기)</summary>
+
+-- 고객
+CREATE TABLE "TB_CUSTOMER" (
+	"CUSTOMER_ID"       VARCHAR(20)  NOT NULL, -- 고객ID
+	"CUSTOMER_NAME"     VARCHAR(50)  NULL,     -- 이름
+	"CUSTOMER_EMAIL"    VARCHAR(40)  NULL,     -- 이메일
+	"CUSTOMER_ADDRESS"  VARCHAR(255) NULL,     -- 주소
+	"CUSTOMER_CNTCT"    VARCHAR(13)  NULL,     -- 연락처
+	"CUSTOMER_PASSWORD" VARCHAR(20)  NULL,     -- 비밀번호
+	"CUSTOMER_JOINED"   DATE         NULL      -- 가입일
+);
+
+-- 고객
+ALTER TABLE "TB_CUSTOMER"
+	ADD
+		CONSTRAINT "PK_TB_CUSTOMER" -- 고객 기본키
+		PRIMARY KEY (
+			"CUSTOMER_ID" -- 고객ID
+		);
+
+-- 제품
+CREATE TABLE "TB_PRODUCT" (
+	"PRODUCT_ID"          NUMERIC(37)   NOT NULL, -- 제품ID
+	"PRODUCT_NAME"        VARCHAR(200)  NULL,     -- 제품명
+	"PRODUCT_EXPLANATION" CLOB          NULL,     -- 설명
+	"PRODUCT_PRICE"       NUMERIC(10)   NULL,     -- 가격
+	"PRODUCT_INVNT"       NUMERIC(10)   NULL,     -- 재고량
+	"PRODUCT_IMAGE_URL"   VARCHAR(1000) NULL,     -- 이미지 URL
+	"CATEGORY_ID"         NUMERIC(37)   NULL      -- 카테고리ID
+);
+
+-- 제품
+ALTER TABLE "TB_PRODUCT"
+	ADD
+		CONSTRAINT "PK_TB_PRODUCT" -- 제품 기본키
+		PRIMARY KEY (
+			"PRODUCT_ID" -- 제품ID
+		);
+
+-- 카테고리
+CREATE TABLE "TB_CATEGORY" (
+	"CATEGORY_ID"   NUMERIC(37) NOT NULL, -- 카테고리ID
+	"CATEGORY_NAME" VARCHAR(50) NULL      -- CATEGORY_NAME
+);
+
+-- 카테고리
+ALTER TABLE "TB_CATEGORY"
+	ADD
+		CONSTRAINT "PK_TB_CATEGORY" -- 카테고리 기본키
+		PRIMARY KEY (
+			"CATEGORY_ID" -- 카테고리ID
+		);
+
+-- 서브카테고리
+CREATE TABLE "TB_SUBCATEGORY" (
+	"SUBCATEGORY_ID"   NUMERIC(37) NOT NULL, -- 서브카테고리ID
+	"SUBCATEGORY_NAME" VARCHAR(50) NULL,     -- 서브카테고리명
+	"CATEGORY_ID"      NUMERIC(37) NOT NULL  -- 카테고리ID
+);
+
+-- 서브카테고리
+ALTER TABLE "TB_SUBCATEGORY"
+	ADD
+		CONSTRAINT "PK_TB_SUBCATEGORY" -- 서브카테고리 기본키
+		PRIMARY KEY (
+			"SUBCATEGORY_ID", -- 서브카테고리ID
+			"CATEGORY_ID"     -- 카테고리ID
+		);
+
+-- 주문
+CREATE TABLE "TB_ORDER" (
+	"ORDER_ID"               NUMERIC(37)  NOT NULL, -- 주문ID
+	"CUSTOMER_ID"            VARCHAR(20)  NULL,     -- 고객ID
+	"ORDER_DATE"             DATE         NULL,     -- 주문일자
+	"ORDER_PAYMENT_STATUS"   NUMERIC(1)   NULL,     -- 결제상태
+	"ORDER_SHIPPING_ADDRESS" VARCHAR(255) NULL,     -- 배송주소
+	"ORDER_TOTAL_AMUNT"      NUMERIC(10)  NULL      -- 총금액
+);
+
+-- 주문
+ALTER TABLE "TB_ORDER"
+	ADD
+		CONSTRAINT "PK_TB_ORDER" -- 주문 기본키
+		PRIMARY KEY (
+			"ORDER_ID" -- 주문ID
+		);
+
+-- 주문상세
+CREATE TABLE "TB_ORDER_DETAIL" (
+	"ORDER_DETAIL_ID"     NUMERIC(37) NOT NULL, -- 주문상세ID
+	"ORDER_ID"            NUMERIC(37) NOT NULL, -- 주문ID
+	"PRODUCT_ID"          NUMERIC(37) NOT NULL, -- 제품ID
+	"ORDER_DETAIL_QNTTY"  NUMERIC(10) NULL,     -- 주문 수량
+	"ORDER_DETAIL_AMOUNT" NUMERIC(10) NULL      -- 주문 금액
+);
+
+-- 주문상세
+ALTER TABLE "TB_ORDER_DETAIL"
+	ADD
+		CONSTRAINT "PK_TB_ORDER_DETAIL" -- 주문상세 기본키
+		PRIMARY KEY (
+			"ORDER_DETAIL_ID", -- 주문상세ID
+			"ORDER_ID",        -- 주문ID
+			"PRODUCT_ID"       -- 제품ID
+		);
+
+-- 장바구니
+CREATE TABLE "TB_CART" (
+	"CART_ID"     NUMERIC(37) NOT NULL, -- 카트ID
+	"CUSTOMER_ID" VARCHAR(20) NULL      -- 고객ID
+);
+
+-- 장바구니
+ALTER TABLE "TB_CART"
+	ADD
+		CONSTRAINT "PK_TB_CART" -- 장바구니 기본키
+		PRIMARY KEY (
+			"CART_ID" -- 카트ID
+		);
+
+-- 주문상세
+CREATE TABLE "TB_CART_DETAIL" (
+	"CART_DETAIL_ID"       NUMERIC(37) NOT NULL, -- 장바구니상세ID
+	"PRODUCT_ID"           NUMERIC(37) NOT NULL, -- 제품ID
+	"CART_ID"              NUMERIC(37) NULL,     -- 카트ID
+	"CART_DETAIL_QUANTITY" NUMERIC(10) NULL      -- 수량
+);
+
+-- 주문상세
+ALTER TABLE "TB_CART_DETAIL"
+	ADD
+		CONSTRAINT "PK_TB_CART_DETAIL" -- 주문상세 기본키2
+		PRIMARY KEY (
+			"CART_DETAIL_ID", -- 장바구니상세ID
+			"PRODUCT_ID"      -- 제품ID
+		);
+
+-- 리뷰
+CREATE TABLE "TB_REVIEW" (
+	"REVIEW_ID"      NUMERIC(37)   NOT NULL, -- REVIEW_ID
+	"CUSTOMER_ID"    VARCHAR(20)   NOT NULL, -- 고객ID
+	"PRODUCT_ID"     NUMERIC(37)   NOT NULL, -- 제품ID
+	"REVIEW_CONTENT" VARCHAR(1000) NULL,     -- REVIEW_CONTENT
+	"REVIEW_RATING"  NUMERIC(1,1)  NULL,     -- REVIEW_RATING
+	"REVIEW_DATE"    DATE          NULL      -- REVIEW_DATE
+);
+
+-- 리뷰
+ALTER TABLE "TB_REVIEW"
+	ADD
+		CONSTRAINT "PK_TB_REVIEW" -- 리뷰 기본키
+		PRIMARY KEY (
+			"REVIEW_ID",   -- REVIEW_ID
+			"CUSTOMER_ID", -- 고객ID
+			"PRODUCT_ID"   -- 제품ID
+		);
+
+-- 제품
+ALTER TABLE "TB_PRODUCT"
+	ADD
+		CONSTRAINT "FK_TB_CATEGORY_TO_TB_PRODUCT" -- 카테고리 -> 제품
+		FOREIGN KEY (
+			"CATEGORY_ID" -- 카테고리ID
+		)
+		REFERENCES "TB_CATEGORY" ( -- 카테고리
+			"CATEGORY_ID" -- 카테고리ID
+		);
+
+-- 서브카테고리
+ALTER TABLE "TB_SUBCATEGORY"
+	ADD
+		CONSTRAINT "FK_TB_CG_TO_TB_SUBCG" -- 카테고리 -> 서브카테고리
+		FOREIGN KEY (
+			"CATEGORY_ID" -- 카테고리ID
+		)
+		REFERENCES "TB_CATEGORY" ( -- 카테고리
+			"CATEGORY_ID" -- 카테고리ID
+		);
+
+-- 주문
+ALTER TABLE "TB_ORDER"
+	ADD
+		CONSTRAINT "FK_TB_CUSTOMER_TO_TB_ORDER" -- 고객 -> 주문
+		FOREIGN KEY (
+			"CUSTOMER_ID" -- 고객ID
+		)
+		REFERENCES "TB_CUSTOMER" ( -- 고객
+			"CUSTOMER_ID" -- 고객ID
+		);
+
+-- 주문상세
+ALTER TABLE "TB_ORDER_DETAIL"
+	ADD
+		CONSTRAINT "FK_TB_PD_TO_TB_ORDER_DETAIL" -- 제품 -> 주문상세
+		FOREIGN KEY (
+			"PRODUCT_ID" -- 제품ID
+		)
+		REFERENCES "TB_PRODUCT" ( -- 제품
+			"PRODUCT_ID" -- 제품ID
+		);
+
+-- 주문상세
+ALTER TABLE "TB_ORDER_DETAIL"
+	ADD
+		CONSTRAINT "FK_TB_ORDER_TO_TB_ORDER_DETAIL" -- 주문 -> 주문상세
+		FOREIGN KEY (
+			"ORDER_ID" -- 주문ID
+		)
+		REFERENCES "TB_ORDER" ( -- 주문
+			"ORDER_ID" -- 주문ID
+		);
+
+-- 장바구니
+ALTER TABLE "TB_CART"
+	ADD
+		CONSTRAINT "FK_TB_CUSTOMER_TO_TB_CART" -- 고객 -> 장바구니
+		FOREIGN KEY (
+			"CUSTOMER_ID" -- 고객ID
+		)
+		REFERENCES "TB_CUSTOMER" ( -- 고객
+			"CUSTOMER_ID" -- 고객ID
+		);
+
+-- 주문상세
+ALTER TABLE "TB_CART_DETAIL"
+	ADD
+		CONSTRAINT "FK_TB_PD_TO_TB_CART_DETAIL" -- 제품 -> 주문상세2
+		FOREIGN KEY (
+			"PRODUCT_ID" -- 제품ID
+		)
+		REFERENCES "TB_PRODUCT" ( -- 제품
+			"PRODUCT_ID" -- 제품ID
+		);
+
+-- 주문상세
+ALTER TABLE "TB_CART_DETAIL"
+	ADD
+		CONSTRAINT "FK_TB_CART_TO_TB_CART_DETAIL" -- 장바구니 -> 주문상세
+		FOREIGN KEY (
+			"CART_ID" -- 카트ID
+		)
+		REFERENCES "TB_CART" ( -- 장바구니
+			"CART_ID" -- 카트ID
+		);
+
+-- 리뷰
+ALTER TABLE "TB_REVIEW"
+	ADD
+		CONSTRAINT "FK_TB_PRODUCT_TO_TB_REVIEW" -- 제품 -> 리뷰
+		FOREIGN KEY (
+			"PRODUCT_ID" -- 제품ID
+		)
+		REFERENCES "TB_PRODUCT" ( -- 제품
+			"PRODUCT_ID" -- 제품ID
+		);
+
+-- 리뷰
+ALTER TABLE "TB_REVIEW"
+	ADD
+		CONSTRAINT "FK_TB_CUSTOMER_TO_TB_REVIEW" -- 고객 -> 리뷰
+		FOREIGN KEY (
+			"CUSTOMER_ID" -- 고객ID
+		)
+		REFERENCES "TB_CUSTOMER" ( -- 고객
+			"CUSTOMER_ID" -- 고객ID
+		);
+
+-- Create Indexes
+CREATE INDEX idx_Product_ProductName ON TB_PRODUCT(PRODUCT_NAME);
+CREATE INDEX idx_Order_CustomerID ON TB_ORDER(CUSTOMER_ID);
+CREATE INDEX idx_OrderDetail_OrderID ON TB_ORDER_DETAIL(ORDER_ID);
+CREATE INDEX idx_OrderDetail_ProductID ON TB_ORDER_DETAIL(PRODUCT_ID);
+CREATE INDEX idx_Cart_CustomerID ON TB_CART(CUSTOMER_ID);
+CREATE INDEX idx_CartDetail_CartID ON TB_CART_DETAIL(CART_ID);
+CREATE INDEX idx_CartDetail_ProductID ON TB_CART_DETAIL(PRODUCT_ID);
+CREATE INDEX idx_Review_CustomerID ON TB_REVIEW(CUSTOMER_ID);
+CREATE INDEX idx_Review_ProductID ON TB_REVIEW(PRODUCT_ID);
+CREATE INDEX idx_Subcategory_CategoryID ON TB_SUBCATEGORY(CATEGORY_ID);
+</details>
+
 ---
 
 ## 물리적 설계
 
 - DBMS에 맞는 물리적 구조 설계
 - 트랜잭션 세부 설계
+
+[4_물리적 설계.txt](https://github.com/LeeJaeYong02/DatabaseDesign/files/12335066/4_.txt)
+
 
 ---
 
