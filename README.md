@@ -87,6 +87,7 @@
 - DBMS에 맞는 스키마 설계
 - 트랜잭션 인터페이스 설계
 
+[2,3_ERD.zip](https://github.com/LeeJaeYong02/DatabaseDesign/files/12335108/2.3_ERD.zip)
 ![image](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/dc50e421-1a75-4c79-a1f5-9ecd7137871f)
 
 ### 관계선 의미
