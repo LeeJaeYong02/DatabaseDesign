@@ -80,6 +80,8 @@
 - DBMS에 독립적인 개념 스키마 설계(E-R 모델)
 - 트랜잭션 모델링
 
+![개념적 설계](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/b9efebfc-79f1-435d-8176-879af726e6ce)
+
 ---
 
 ## 논리적 설계
