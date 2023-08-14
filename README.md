@@ -101,7 +101,14 @@
 - DBMS에 맞는 물리적 구조 설계
 - 트랜잭션 세부 설계
 
-[4_물리적 설계.txt](https://github.com/LeeJaeYong02/DatabaseDesign/files/12335066/4_.txt)
+---
+
+## 구현
+
+- 특정 DBMS의 DDL로 데이터베이스 생성
+- 트랜잭션 작성
+
+[5_구현.txt](https://github.com/LeeJaeYong02/DatabaseDesign/files/12335066/4_.txt)
 <details>
 <summary>스크립트 (접기/펼치기)</summary>
 
@@ -383,13 +390,6 @@ CREATE INDEX idx_Review_CustomerID ON TB_REVIEW(CUSTOMER_ID);
 CREATE INDEX idx_Review_ProductID ON TB_REVIEW(PRODUCT_ID);
 CREATE INDEX idx_Subcategory_CategoryID ON TB_SUBCATEGORY(CATEGORY_ID);
 </details>
-
----
-
-## 구현
-
-- 특정 DBMS의 DDL로 데이터베이스 생성
-- 트랜잭션 작성
 
 ![5_데이터베이스 실제 테이블](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/1f36c9d4-a8da-4868-9eca-42449303c9ae)
 
