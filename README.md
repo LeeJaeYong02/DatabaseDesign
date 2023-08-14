@@ -99,6 +99,9 @@
 
 ![image](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/dc50e421-1a75-4c79-a1f5-9ecd7137871f)
 
+### 관계선 의미
+![image](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/d7ae73d9-a941-4a41-ac76-55aa2d403041)
+
 ### 인덱스
 
 1. 고객(Customer) 테이블:
@@ -143,9 +146,6 @@
 10. 서브카테고리(Subcategory) 테이블:
 
 - SubcategoryID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
-
-### 관계선 의미
-![image](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/d7ae73d9-a941-4a41-ac76-55aa2d403041)
 
 ---
 
