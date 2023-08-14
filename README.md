@@ -401,6 +401,51 @@ CREATE INDEX idx_Review_ProductID ON TB_REVIEW(PRODUCT_ID);
 CREATE INDEX idx_Subcategory_CategoryID ON TB_SUBCATEGORY(CATEGORY_ID);
 </details>
 
+### 인덱스
+
+1. 고객(Customer) 테이블:
+
+- CustomerID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+- Email을 Unique Index로 생성하여 중복 이메일 방지
+
+2. 제품(Product) 테이블:
+
+- ProductID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+- ProductName을 Non-unique Index로 생성하여 검색 성능 개선
+
+3. 주문(Order) 테이블:
+
+- OrderID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+- CustomerID를 Non-unique Index로 생성하여 고객별 주문 조회 성능 개선
+
+4. 주문상세(OrderDetail) 테이블:
+
+- OrderDetailID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+- OrderID와 ProductID를 Non-unique Index로 생성하여 주문 상세 검색 성능 개선
+
+5. 장바구니(Cart) 테이블:
+
+- CartID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+- CustomerID를 Non-unique Index로 생성하여 고객별 장바구니 조회 성능 개선
+
+7. 장바구니상세(CartDetail) 테이블:
+
+- CartDetailID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+- CartID와 ProductID를 Non-unique Index로 생성하여 장바구니 상세 검색 성능 개선
+
+8. 리뷰(Review) 테이블:
+
+- ReviewID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+- CustomerID와 ProductID를 Non-unique Index로 생성하여 리뷰 검색 성능 개선
+
+9. 카테고리(Category) 테이블:
+
+- CategoryID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+
+10. 서브카테고리(Subcategory) 테이블:
+
+- SubcategoryID를 Primary Key로 사용하여 기본 클러스터형 인덱스 생성
+
 ![5_데이터베이스 실제 테이블](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/1f36c9d4-a8da-4868-9eca-42449303c9ae)
 
 ---
