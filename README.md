@@ -386,4 +386,6 @@ CREATE INDEX idx_Subcategory_CategoryID ON TB_SUBCATEGORY(CATEGORY_ID);
 - 특정 DBMS의 DDL로 데이터베이스 생성
 - 트랜잭션 작성
 
+![5_데이터베이스 실제 테이블](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/1f36c9d4-a8da-4868-9eca-42449303c9ae)
+
 ---
