@@ -80,7 +80,7 @@
 - DBMS에 독립적인 개념 스키마 설계(E-R 모델)
 - 트랜잭션 모델링
 
-![개념적 설계](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/c3a1efac-bff2-49c1-a649-89f25ff61bc8)
+![2_개념적 설계](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/3246ca57-617c-4911-80c9-000b7613fdd6)
 
 ---
 
