@@ -89,6 +89,7 @@
 - DBMS에 맞는 스키마 설계
 - 트랜잭션 인터페이스 설계
 
+![3_논리적 설계](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/7edd448f-5ddb-41f2-8eaa-a8d45a7316e0)
 
 ---
 
