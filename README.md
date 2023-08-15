@@ -452,3 +452,7 @@ CREATE INDEX idx_Subcategory_CategoryID ON TB_SUBCATEGORY(CATEGORY_ID);
 ![5_데이터베이스 실제 테이블](https://github.com/LeeJaeYong02/DatabaseDesign/assets/66985977/1f36c9d4-a8da-4868-9eca-42449303c9ae)
 
 ---
+
+참고 하면 좋을 것 같은거
+
+https://rutgo-letsgo.tistory.com/138
